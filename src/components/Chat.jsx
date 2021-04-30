@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import socket from '../socket'
 
 const Chat = (props) => {
     const [message, setMessage] = useState('')
+    const messagesRef = useRef(null)
 
     const onSend = (e) => {
         e.preventDefault()
@@ -18,6 +19,10 @@ const Chat = (props) => {
         setMessage('')
     }
 
+    useEffect(() => {
+        messagesRef.current.scrollTo(0, 999990)
+    }, [props.messages])
+
     return (
         <div className='chatPage'>
             <div className="usersBlock">
@@ -28,7 +33,7 @@ const Chat = (props) => {
                 ))}
             </div>
             <div className="messagesBlock">
-                <div className="messages">
+                <div className="messages" ref={messagesRef}>
                     {props.messages.map((message, index) => (
                         <div className={"message " + (message.username === props.username ? 'myMsg' : undefined)}>
                             <p className='messageText' key={message+index}>{message.message}</p>
