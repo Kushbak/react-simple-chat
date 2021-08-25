@@ -26,7 +26,7 @@ const Chat = (props) => {
     return (
         <div className='chatPage'>
             <div className="usersBlock">
-                <p>Комната: <b>{props.roomId}</b></p>
+                <p className='room'>Комната: <b>{props.roomId}</b></p>
                 <h4>Онлайн({props.users.length})</h4>
                 {props.users.map((user, index) => (
                     <p className='user' key={user + index}>{user}</p>

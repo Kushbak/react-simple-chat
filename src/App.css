@@ -9,7 +9,6 @@
 }
 
 .app {
-    padding: 20px;
     min-height: 100vh;
 }
 
@@ -48,19 +47,43 @@
 
 
 .chatPage {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    height: 100%;
+    display: flex;
 }
+
 .messagesBlock {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    flex-basis: calc(100vw - 300px);
     background-color: #f5f5dc;
 }
 
 .messages {
-    height: 100%;
-    max-height: 300px;
     overflow-y: auto;
+}
+
+
+.usersBlock {
+    padding: 20px;
+    flex-basis: 300px;
+    width: 100%;
+}
+
+.room {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 1.3rem;
+}
+
+h4 {
+    padding: 10px 0 20px;
+    text-align: center;
+}
+
+.user {
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    background-color: #7fffd430;
 }
 
 .sendMsgForm {
@@ -84,15 +107,22 @@
 
 .message {
     margin: 10px;
+    width: 100%;
 }
 
 .message.myMsg {
     text-align: right;
 }
 
+.message.myMsg > .messageText  {
+    border-radius: 10px;
+    border-bottom-right-radius: 0;
+}
+
 .messageText {
     display: inline-block;
     border-radius: 10px;
+    border-bottom-left-radius: 0;
     background-color: burlywood;
     padding: 10px 20px;
 }
